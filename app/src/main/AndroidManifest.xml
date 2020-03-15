@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.c.studyroominfo">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:allowBackup="true"
+
+        android:icon="@drawable/group_229"
+        android:label="INU스터디룩"
+        android:roundIcon="@drawable/group_229"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Index">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Main"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".StudyRoomMap" />
+        <activity android:name=".StudyRoomList" />
+        <activity android:name=".StudyRoomLibReserv"/>
+        <activity android:name=".ImgDetailActivity"/>
+    </application>
+
+</manifest>

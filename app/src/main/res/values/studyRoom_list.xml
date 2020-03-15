@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="study_short">
+        <item>건물 정보</item>
+        <item>제 1호관 대학본부</item>
+        <item>제 6호관 학산도서관</item>
+        <item>제 11호관 복지회관</item>
+        <item>제 27호관 스터디룸 및 세미나실</item>
+        <item>제 28호관 스터디룸 및 세미나실</item>
+        <item>제 29호관 스터디룸</item>
+    </string-array>
+</resources>

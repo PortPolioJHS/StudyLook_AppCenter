@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="40dp"
+    style="@style/AppBottomSheetDialogTheme">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pic_side_01"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        android:id="@+id/tv_bs_building"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1호관"
+        android:fontFamily="monospace"
+        android:layout_marginTop="20dp"
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/tv_bs_many"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="14개의 스터디룸 보유"
+        android:textColor="@color/design_default_color_secondary_variant"
+        android:fontFamily="monospace"
+        android:layout_marginTop="6dp"/>
+
+    <View
+        android:layout_width="180dp"
+        android:layout_height="1dp"
+        android:background="#9C9797"
+        android:layout_marginTop="3dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="예약은 포탈에서 제공합니다."
+        android:layout_marginTop="3dp"
+        android:fontFamily="monospace"/>
+
+</LinearLayout>

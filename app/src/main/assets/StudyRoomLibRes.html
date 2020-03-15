@@ -1,0 +1,996 @@
+<meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+<title> ★ STUDY LOOK ★</title>
+  <head>
+<style>
+
+@charset "utf-8";
+* {padding: 0; margin: 0;}
+p
+{ 
+font-family: "Nanum Gothic", sans-serif;
+}
+summary
+{
+font-family: "Nanum Gothic", sans-serif;
+}
+.textbox {position: relative;} .textbox label { position: absolute; top: 1px; /* input 요소의 border-top 설정값 만큼 */ left: 1px; /* input 요소의 border-left 설정값 만큼 */ padding: .8em .5em; /* input 요소의 padding 값 만큼 */ color: #999; cursor: text; } .textbox input[type="text"], .textbox input[type="password"] { width: 100%; /* 원하는 너비 설정 */ height: auto; /* 높이값 초기화 */ line-height : normal; /* line-height 초기화 */ padding: .8em .5em; /* 원하는 여백 설정, 상하단 여백으로 높이를 조절 */ font-family: inherit; /* 폰트 상속 */ border: 1px solid #999; border-radius: 0; /* iSO 둥근모서리 제거 */ outline-style: none; /* 포커스시 발생하는 효과 제거를 원한다면 */ -webkit-appearance: none; /* 브라우저별 기본 스타일링 제거 */ -moz-appearance: none; appearance: none; }
+
+
+
+
+/*log*/
+.log {
+	margin: 1.5em 0.75em;
+}
+
+.logSelect {
+	margin: 0 0 0.75em 0;
+}
+
+.logSelect input.library {
+	margin: 0 0 0 1.5em;
+}
+
+.log div.logBox {
+	margin: 0 0 0.75em 0;
+	padding: 0.75em;
+	background: white;
+}
+
+.log div.logBox .login {
+	position: relative;
+	padding: 0 88px 0.75em 0;
+	border-bottom: 2px solid white;
+}
+
+.log div.logBox .login p {
+	width: 100%;
+	margin: 0 0 0.2em 0;
+	padding: 0 1em 0 0;
+}
+
+.log div.logBox .login input {
+	width: 100%;
+	height: 30px;
+	margin: 0 0 0.2em 0;
+	padding: 0 0.25em;
+	font-weight: bold;
+	color: #000;
+}
+
+.log div.logBox .login span.logBtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	float: right;
+}
+
+.log div.logBox .login span.logBtn input {
+	width: 75px;
+	height: 65px;
+	border: 0;
+	background: url("http://mlib.inu.ac.kr/image/ko/local/logBtn.gif") no-repeat 0 50%;
+	color: #143391;
+}
+
+.log div.logBox div.option {
+	border-top: 1px solid #fff;
+	padding: 0.75em 0 0 0;
+	clear: both;
+}
+
+.log div.logBox div.option input.passWord {
+	margin: 0 0 0 1.5em;
+}
+
+/*selectUser*/
+.selectUser {
+	margin: 1.5em 0.75em;
+}
+
+.list p {
+	width: 100%;
+	padding: 8px 0;
+	border: 1px solid #d6d3cd;
+	border-bottom: 0;
+	text-align: center;
+	background: #ebebeb;
+}
+
+.list p span {
+	margin: 0;
+	padding: 0 0.4em 0 0.8em;
+	background: url("../../image/ko/local/diagonal1.gif") no-repeat 0 50%;
+}
+
+.list p span:first-child {
+	background: none;
+}
+
+.list ul.content {
+	border: 1px solid #d6d3cd;
+}
+
+.list ul.content li {
+	padding: 0.5em;
+	border-top: 1px solid #d6d3cd;
+	background: none;
+}
+
+.list ul.content li:first-child {
+	border-top: 0;
+}
+
+.list ul.content li span {
+	margin: 0;
+	padding: 0 0.8em 0 0.4em;
+	background: url("../../image/ko/local/diagonal2.gif") no-repeat 100% 50%;
+}
+
+.list ul.content a {
+	display: inline;
+	position: absolute;
+	top: 0;
+	right: 12px;
+	padding: 8px 12px 0 0;
+	font-size: 0.9em;
+	font-weight: bold;
+	text-decoration: underline;
+	text-align: right;
+	color: #032a9f;
+}
+
+.possible {
+	color: #2c56ab;
+}
+
+.impossible {
+	color: #cc2424;
+}
+@charset "utf-8";
+
+/*item*/
+.summary {
+	height: 1em;
+	margin: 0.5em 0.75em;
+	font-size: 0.9em;
+	color: white;
+}
+
+.summary .count {
+	float: left;
+}
+
+.summary .paging {
+	float: right;
+	font-size: 0.9em;
+	font-weight: normal;
+}
+
+/*paging*/
+.paging {
+	padding: 0 0 1.5em 0;
+	font: 14px AppleGothic, Verdana;
+	margin: 0 auto;
+	font-weight: bold;
+	text-align: center;
+}
+
+.paging a.page {
+	padding: 0.31em 0.5em 0.25em 0.5em;
+	background-color: #ffffff;
+	color: #000;
+	vertical-align:middle;
+}
+
+.paging a:hover.page {
+	padding: 0.31em 0.5em 0.25em 0.5em;
+	background-color: #f9f9f9;
+	color: #991f03;
+}
+
+.paging a.current,.paging a:hover.current {
+	padding: 0.31em 0.5em 0.25em 0.5em;
+	background-color: #1c6dc7;
+	color: #fff;
+	vertical-align:middle;
+}
+
+/*List*/
+.searchList .list {
+	margin: 0 0.75em 1.5em 0.75em;
+}
+
+.list {
+	margin: 1.5em 0.75em;
+}
+
+.list ul {
+	position: relative;
+	top: 0;
+	width: 100%;
+	border: 1px solid white;
+	background: #fff;
+	overflow: hidden;
+}
+
+.list li {
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-top: 1px solid #d6d3cd;
+	background: url("../../image/ko/common/ico/next.gif") no-repeat 100% 50%;
+	overflow: hidden;
+}
+
+.list li.basic {
+	padding: 0.75em 0;
+	background: none;
+}
+
+.list li span.checkBox {
+	position: absolute;
+	top: 0.95em;
+	left: 0;
+	width: 14px;
+	float: left;
+}
+
+.list li a {
+	display: block;
+	position: relative;
+	height: 100%;
+	padding: 0.75em 0;
+	overflow: hidden;
+}
+
+.list li a.group {
+	margin: 0 0 0 24px;
+}
+
+.list li.empty {
+	width: 100%;
+	padding: 3em 0;
+	background: none;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	color: #558544;
+}
+
+.list li:first-child {
+	border-top: 0;
+}
+
+.list ul li span {
+	display: inline-block;
+	margin: 0 20px 0 0;
+	padding: 0 0.75em;
+	font-size: 0.9em;
+}
+.list ul li span.check {    
+	float:left;
+	margin:0.75em 0
+}
+.list ul li span.title {
+	height: 100%;
+	padding-bottom: 0.2em;
+	background: none;
+	color: #000;
+	font-size: 1em;
+	font-weight: normal;
+}
+
+.list ul li span.writer {
+	margin: 0;
+	padding: 0 0.4em 0 0.75em;
+	background: url("../../image/ko/common/line1.gif") no-repeat 100% 50%;
+	font-size: 0.9em;
+	color: #817f7f;
+}
+
+.list ul li span.date {
+	margin: 0;
+	padding: 0;
+	font-size: 0.8em;
+	font-family: AppleGothic, Verdana;
+	color: #817f7f;
+}
+
+.list ul li span.text {
+	margin: 0;
+	padding: 0 0.4em 0 0.75em;
+	font-size: 0.9em;
+	color: #817f7f;
+}
+
+/*detail*/
+.detail {
+	margin: 1.5em 0.75em;
+	line-height: 1.5em;
+}
+
+.detail p.title {
+	padding: 8px 0 0 0;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #000;
+}
+
+.detail p.content {
+	padding: 0 0 24px 0;
+	line-height: 1.5em;
+}
+
+.detail p.writeInfo {
+	padding: 6px 12px;
+	background: #f4f2ed;
+	font-size: 0.9em;
+	color: #7e7c7c;
+}
+
+.detail p.writeInfo .writer {
+	margin: 0 8px 0 0;
+	padding: 0 8px 0 0;
+	background: url("../../image/ko/common/line1.gif") no-repeat 100% 50%;
+}
+
+/*question and reply*/
+.detail div.question {
+	border-bottom: 2px solid white;
+	margin: 0 0 4px 0;
+}
+
+.detail div.reply {
+	border: 1px solid #c5c3bd;
+	margin-top: 0.5em;
+}
+
+.detail div.question p.title span {
+	display: block;
+	font-size: 1.25em;
+	font-weight: bold;
+	color: #1165c1;
+}
+
+.detail div.reply div.item p.title {
+	/*border-bottom: 1px solid #c5c3bd;*/
+	padding: 12px;
+	color: #000000;
+}
+
+.detail div.question p.title span img,.detail div.reply div.item p.title span img
+	{
+	float: left;
+	margin: 0;
+}
+
+.detail div.question p.title span.text {
+	margin: 0 0 0 36px;
+}
+
+.detail div.reply div.item p.title span.text {
+	margin: 0 0 0 4px;
+}
+
+.detail div.reply div.item p.content {
+	padding: 0 12px 24px 12px;
+	line-height: 1.5em;
+}
+
+/*request_table*/
+.request {
+	margin: 1.5em 0.75em;
+	line-height: 1.5em;
+	border: 2px solid #ECECE5;
+}
+
+.request table {
+	width: 100%;
+	min-width: 320px;
+}
+
+.request table td select,.request table td input,.request table td textarea
+	{
+	width: 100%;
+}
+
+.request table,.request table tr th,.request table tr td {
+	border: 0;
+}
+
+.request table tbody tr th {
+	width: 30%;
+	background: #f8f8f5;
+	border-bottom: 1px solid #ffffff;
+	padding: 6px 12px;
+}
+
+.request table tbody tr td {
+	width: 70%;
+	border-bottom: 1px solid #eeeeee;
+	padding: 6px 12px;
+	font-size: 0.9em;
+	color: #999;
+}
+
+.star {
+	color: #FF3300;
+	margin: 0 6px 0 0;
+}
+
+.request table tbody tr th.title {
+	text-align: left;
+}
+
+/*write*/
+div.write {
+	position: relative;
+	line-height: 1.5em;
+	margin: 1.5em 0.75em;
+}
+
+.write fieldset {
+	margin: 0 0 1.5em 0;
+}
+
+.write dl dt.title {
+	position: absolute;
+	padding: 2px 12px;
+	font-weight: bold;
+	color: white;
+}
+
+.write dl dd.titleBox {
+	margin-left: 60px;
+}
+
+.write dl dd.titleBox input {
+	width: 100%;
+	height: 1.6em;
+}
+
+.write dl dd.contentBox {
+	margin: 8px 0 0 0;
+}
+
+.write dl dd textarea {
+	width: 100%;
+}
+
+/*button*/
+.button {
+	position: relative;
+	display: block;
+	height: auto;
+	padding: 0 0 1.5em 0;
+	color: white;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+.inputButton {
+	position: relative;
+	top: -1px;
+	height: 22px;
+	background: url(../../image/ko/common/btn/buttonRight.gif) no-repeat 100% 50%;
+	padding: 5px 0 6px 0;
+	cursor: pointer;
+}
+/*button Hack in  IE7 and fire Fox*/
+@
+-moz-document url-prefix (){ .inputButton { position:relative;
+	top: 0;
+	padding: 6px 0 5px 0;
+}
+
+}
+*:first-child+html .inputButton {
+	position: relative;
+	top: 1px;
+	padding: 5px 0 5px 0;
+}
+
+.inputButton input {
+	height: 22px;
+	border-style: none;
+	padding: 1px 4px 2px 4px;
+	font-size: 1em;
+	background: url(../../image/ko/common/btn/buttonLeft.gif) no-repeat 0 50%;
+	color: white;
+	margin: 0 0 2px 0;
+	cursor: pointer;
+}
+
+.linkButton {
+	position: relative;
+	top: 0;
+	height: 22px;
+	margin: 0 0 2px 0;
+	padding: 5px 0 4px 0;
+	background: url(../../image/ko/common/btn/buttonRight.gif) no-repeat
+		100% 50%;
+}
+
+.linkButton span {
+	height: 22px;
+	padding: 5px 4px 4px 4px;
+	background: url(../../image/ko/common/btn/buttonLeft.gif) no-repeat 0
+		50%;
+}
+/*button Hack in IE7*/
+*:first-child+html .linkButton {
+	padding: 4px 0;
+}
+
+*:first-child+html .linkButton span {
+	padding: 4px;
+}
+
+/*message*/
+.message {
+	margin: 1em auto;
+	background: url(../../image/ko/common/messageTop.gif) no-repeat 0 0;
+	width: 237px;
+	height: 187px;
+}
+
+.message p {
+	margin: 1em auto;
+	background: url(../../image/ko/common/messageBottom.gif) no-repeat 0
+		100%;
+	width: 237px;
+	height: 187px;
+}
+
+.message p span {
+	display: block;
+	margin: 0 0 1.0em 0;
+	font-weight: bold;
+	text-align: center;
+}
+
+.message p img {
+	margin: 1.0em 0 0 0;
+}
+
+/*description*/
+p.description {
+	font-size: 0.9em;
+}
+.detail .content img{width:100% !important; height:auto !important;}
+
+
+@charset "utf-8";
+
+body{
+	background-color:white;
+}
+
+/* layout */
+.wrapper{
+	width:100%;
+	text-align:center;
+}
+.contents{
+	background-color:#fff;
+}
+
+/* header */
+.header .logo{
+	padding: 9px 0 0px 0;
+}
+.header .topSearch{
+	position:relative;
+	margin: 7px;
+}
+.header .topSearch form{
+	height:31px;
+	border:5px solid #f6a514;
+	background-color:#fff;
+}
+.header .topSearch .write{
+	float:left;
+	width:83%;
+	height:31px;
+	padding: 0 8px;
+	border:0 none;
+	line-height:31px;
+}
+.header .topSearch .searchBtn{
+	position:absolute;
+	top:0;
+	right:0;
+	width:27px;
+	height:27px;
+	padding:7px 12px;
+	background-color:#f6a514;
+}
+
+/* contents */
+.contents h2.title{
+	padding: 0 10px;
+	border-bottom:1px solid white;
+	background-color:#d0e2f6;
+	color:#40464b;
+	font-size:1.0em;
+	text-align:left;
+	line-height:31px;
+}
+.contents .prev{
+	position:absolute;
+	top:18px;
+	left:7px;
+}
+.contents .prev a{
+	display:block;
+	padding-right:10px;
+}
+.contents .home{
+	position:absolute;
+	top:18px;
+	right:7px;
+}
+.contents .home a{
+	display:block;
+}
+/* contentTab */
+.contents .contentTab{
+	position:relative;
+	height:31px;
+	border-bottom:1px solid #e7eaf0;
+	background-color:#f9f9f9;
+	line-height:31px;
+}
+.contents .contentTab ul{
+	width:100%;
+}
+.contents .contentTab ul li{
+	float:left;
+	height:31px;
+}
+.contents .contentTab ul li a{
+	display:block;
+	padding:0 11px;
+	color:#636363;
+	letter-spacing:-0.05em;
+}
+.contents .contentTab ul li a.select{
+	height:32px;
+	border-left: 1px solid #e7eaf0;
+	border-right: 1px solid #e7eaf0;
+	background-color:#fff;
+	color:#40464b;
+	font-weight:bold;
+}
+.contents .contentTab ul li:first-child a{
+	border-left:0 none;
+}
+/* tabMenu */
+.contents .tabMenu{
+	clear:both;
+	width:100%;
+}
+.contents .tabMenu ul{
+	margin:7px;
+	overflow:hidden;
+}
+.contents .tabMenu ul li{
+	float:left;
+	margin-right:3px;
+}
+.contents .tabMenu ul li a{
+	display:block;
+	padding: 0 5px;
+	border:1px solid #e7eaf0;
+	background-color:#f9f9f9;
+	font-size:12px;
+}
+.contents .tabMenu ul li a.select{
+	background-color:#e7eaf0;
+	color:#40464b;
+	font-weight:bold;
+}
+/* content */
+.contents > .content{
+	clear:both;
+	min-height:200px;
+	text-align:left;
+	overflow:hidden;
+}
+
+/* footer */
+.footer .footerMenu ul{
+	background-color:#ffffff;
+	overflow:hidden;
+}
+.footer .footerMenu ul li{
+	float:left;
+	width:49.7%;
+}
+.footer .footerMenu ul li a{
+	display:block;
+	padding:6px 0;
+	color:#40464b;
+	font-size:0.95em;
+}
+.footer .footerMenu ul li:first-child{
+	border-right:1px solid white;
+}
+.footer .copyright{
+	padding:5px 0;
+	font-size:0.75em;
+	line-height:1.1;
+}
+
+@charset "utf-8";
+
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button {
+	margin:0;
+	padding:0;
+	-webkit-text-size-adjust:none;
+}
+body,input,textarea,select,table,button {
+	font-size:14px;
+	font-family:"Nanum Barun Gothic", sans-serif;
+}
+body {
+	position:relative;
+	color:white;
+	word-wrap:break-word;
+	word-break:break-all;
+	line-height:1.5em
+}
+img,fieldset {
+	border:0;
+}
+img, input{
+	vertical-align:middle
+}
+ul {
+	list-style:none;
+}
+em,address {
+	font-style:normal;
+}
+p {
+	margin:0;
+	padding:0;
+}
+hr {
+	display:none;
+	list-style:circle inside
+}
+legend, caption, hr {
+	display:none;
+}
+a {
+	color:#5d5d5d;
+	text-decoration:none;
+}
+
+
+/* Solution CSS */
+/* basic */
+.skip, .accessibility, caption {
+	display: none;
+}
+.cursor {
+	cursor: pointer;
+}
+/* Form */
+.content select, .content radio, .content input{
+	vertical-align:middle
+}
+.content input[type=text], .content input[type=password]{
+	border:1px solid #ccc;
+	color:#444;
+	height:23px
+}
+.content select{
+	border:1px solid #ccc;
+	color:#444;
+	font-size:14px;
+	height:25px;
+	line-height:25px;
+	padding:0 3px;
+}
+.content input[type=checkbox]{
+	margin:0 0 2px 0
+}
+.content textarea{
+	border:1px solid white;
+	border-radius:3px;
+	box-shadow:0 1px 0 #f2f2f2 inset
+}
+</style>
+</head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta content="initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no" name="viewport">
+
+</head>
+	<body>
+
+        <h1 class="skip">인천대 학산도서관 스터디룸 조회</h1>
+        <!-- Header start -->
+
+        <!-- Search end -->
+    </div>
+	<div class = "logo">
+			<p align = "center" style ="font-size:17px; color: 393ca9; font-weight: bold; "> <I>
+			
+					&nbsp; <br>	
+					
+					
+					&nbsp; <br><!-- 공란추가-->
+				</I>	
+		<img src="https://postfiles.pstatic.net/MjAyMDAyMjRfNTQg/MDAxNTgyNTM1MzA4MTk3.u1-DJ2dvl3Lbl3Rjz
+		_wW5oS1l-35-TBBn-uAXBR29Kkg.6-Ae3zoPQ
+		GiUP6IhBV3P0BUdP21CBSVWGr8hux1d
+		4CMg.PNG.ydg2688/%EC%8A%A4%ED%84%B0%EB%94%94%EB%A3%A9_%EB%A1
+		%9C%EA%B3%A0.png?type=w773" width = "150" height = "168" style= "margin-left: auto; 
+		margin-right: auto; display: block;">
+			<p align = "center" style = "font-weight: bold;color:black;" >
+				인천대학교 스터디룸 정보제공 앱
+				&nbsp; <br></p>
+				<p align = "center" style ="font-size:11px; color: 393ca9; font-weight: bold; "> <I>
+						&nbsp; <br> <!-- 공란추가-->
+					</I>	
+			<p align = "center" style ="font-size:13px; color: 393ca9; font-weight: bold; "> 
+				로그인 실패시 자동으로 도서관 홈페이지로 이동합니다.
+			
+			<p align = "center" style ="font-size:11px; color: 393ca9; font-weight: bold; "> <I>
+					&nbsp; <br> <!-- 공란추가-->
+				</I>
+			<p align = "center" style ="font-size:15px; color:red; font-weight: bold; "> 
+				- 현재 도서관 스터디룸만 예약 가능합니다. -
+			 </p>
+			 <p align = "center" style ="font-size:11px; color:black; font-weight: bold; "> 
+					업데이트 예정
+				 </p>      
+			
+			
+            <div class="content">
+            
+            <form name="login" id="login" action="http://mlib.inu.ac.kr/login" method="POST">
+            <input name="mobile" type="hidden" value="">
+                
+                    
+                    <input name="retUrl" type="hidden" value="/studyroom/main">
+                
+
+                </script>
+                <fieldset>
+                    <legend class="skip">사용자 인증</legend>
+                    
+				
+                    <!-- log -->
+                    <div class="log">                        
+                      
+                        
+                        <div class="logBox">
+                            <div class="login">
+
+                                <p>
+						
+								<!-- ID -->
+								<!-- 아이디 자동으로 저장하고 싶을 경우  value="아이디값"-->
+							
+					
+                                    <input name="id" title="도서관ID(학번)" id="id" type="text" size="20" maxlength="15" placeholder="도서관ID(학번)" value="도서관ID(학번)" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;"><br>
+                                    
+								<!-- PW -->
+								<!-- 비번 자동으로 저장하고 싶을 경우  value="비밀번호값"-->
+
+                                    <input name="password" title="도서관PW(비밀번호)" id="password" type="password" size="20" maxlength="20" placeholder="도서관PW(비밀번호)" value="11111111" onfocus="this.value=''; this.type='password'; return true" onkeypress="enterKey(event)"
+
+
+                                    
+                                    
+                                </p>
+                                <span class="logBtn">
+                                    <input type="submit" alt="로그인" value="로그인">
+                                </span>
+                            </div>						
+                        </div>
+                    </div>
+
+					
+					<details>
+ 
+				<summary align = "center" style="color:black;">로그인 방법 혹은 비밀번호를 찾고 계시나요?</summary>
+	<p align = "center" style=" font-size:12px;color:red; font-weight: bold;";>  · 포털시스템과 도서관 홈페이지 비밀번호는 다를 수도 있습니다.
+	<p align = "center" style=" font-size:12px;color:blue; font-weight: bold;";>· 비밀번호 분실,변경시 학산도서관 PC홈페이지를 이용해 주세요.</p>
+	<p align = "center" style=" font-size:12px;color:black;";>★ 도서관 ID: 학번 (EX:201801□□□) </p>
+	<p align = "center" style=" font-size:12px;color:black;";>★ 초기 비밀번호: 생년월일 6자리입력 (EX:980716)</p>
+	
+</details>
+             </fieldset>
+				
+            </form>
+        </div>
+	
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var typeValue = "";
+               if(typeValue == null || typeValue.length == 0 ||typeValue == '') {
+                   $("#type1").attr("checked", "checked");
+               } 
+               viewGuide('2');
+               $('#id').focus();
+        });
+    
+        function closeErrorLayer() {
+            $("#errorLayer").css("display","none");
+        }
+        
+    
+        function portalLogin() {
+            var widthValue= (window.screen.width/2) - 225;
+            var heightValue= (window.screen.height/2) - 70;
+            var option = "scrollbars=no,resizable=no,location=no,width=400,height=200,left="+widthValue+",top="+heightValue;
+            window.open("http://portal.korea.ac.kr/s_gate.jsp?returnURL=mlib.inu.ac.kr/jsp/theme/korea/loginPortal.jsp", "portalLogin", option);
+            //document.location.href="/";
+        }
+    
+        function goAfterPortalLogin() {
+            if(document.login.retUrl) {
+                document.login.action = document.login.retUrl.value;
+                document.login.submit();
+            } else {
+                window.location.href="/";
+            }
+        }
+
+
+
+
+
+    
+    </script>
+        </div>
+        <!-- Contents end -->
+        <!-- Footer start -->
+
+    </div>
+          <!-- Footer end -->
+    </div>
+    <script src="/script/common.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        function initQuery(obj) {
+            if(obj.value=="검색어를 입력해주세요") {
+                obj.value = "";
+            }	
+        }
+    </script>
+
+    </body>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<p align = "center" style ="font-size:15px; color: 393ca9; font-weight: bold; "> <I>
+			&nbsp; <br>&nbsp; <br>&nbsp; <br>
+			&nbsp; <br><!-- 공란추가-->
+		</I>
+	
+	
+	
+	
+	
+	
+	
+	<p align = "center" style="font-size:10px;  color:gray;";>COPYRIGHT (C) 2020<br>
+			BY INCHEON NATIONAL UNIVERSITY APPCENTER.<br>
+			ALL RIGHTS RESERVED.</p>

@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">StudyRoomInfo</string>
+
+    <string-array name="dept_array">
+        <item>1호관 대학본부</item>
+        <item>11호관 복지회관</item>
+        <item>27호관 스터디룸 및 세미나실</item>
+        <item>28호관 스터디룸 및 세미나실</item>
+        <item>29호관 스터디룸</item>
+        <item>201호관 미래관</item>
+        <item>202호관 동북아E-biz센터</item>
+    </string-array>
+
+</resources>
